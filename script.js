@@ -49,18 +49,24 @@ function playRound()
 {
     humanChoice = getHumanChoice();
     computerChoice = getComputerChoice(); 
+
+    console.log("You chose " + humanChoice + " while the computer chose " + computerChoice + ".");
+
     switch(humanChoice) 
     {
         case "Rock":
             switch(computerChoice)
             {
                 case "Rock":
+                    console.log("It's a tie. No point for anyone.");
                     break;
                 case "Paper":
                     computerScore++; // computer wins!
+                    console.log("You lost!");
                     break; 
                 case "Scissors":
                     humanScore++; // human wins!
+                    console.log("You win!");
                     break;
                 default:
                     return; 
@@ -71,11 +77,14 @@ function playRound()
             {
                 case "Rock":
                     humanScore++; // human wins!
+                    console.log("You win!");
                     break;
                 case "Paper":
+                    console.log("It's a tie. No point for anyone.");
                     break; 
                 case "Scissors":
                     computerScore++; // computer wins!
+                    console.log("You lost!");
                     break;
                 default:
                     return; 
@@ -86,11 +95,14 @@ function playRound()
             {
                 case "Rock":
                     computerScore++; // computer wins!
+                    console.log("You lost!");
                     break;
                 case "Paper":
                     humanScore++; // human wins!
+                    console.log("You win!");
                     break; 
                 case "Scissors":
+                    console.log("It's a tie. No point for anyone.");
                     break;
                 default:
                     return; 
@@ -99,6 +111,30 @@ function playRound()
         default:
             return; 
     }
+
+    console.log("Current scores:\nYou: " + humanScore + "\nComputer: " + computerScore);
+}
+
+let rounds = 0;
+
+while (rounds < 5)
+{
+    console.log("Round " + (rounds + 1) + ":")
+    playRound();
+    rounds++; 
+}
+
+if (humanScore > computerScore)
+{
+    console.log("You win the whole game! Play again?");
+}
+else if (computerScore > humanScore)
+{
+    console.log("You lose this game! GAME OVER!");
+}
+else
+{
+    console.log("It's a tie! Play again?");
 }
 
 
